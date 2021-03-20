@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/dimen_main_half"
+        app:cardElevation="@dimen/elevation_main">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.example.sellit.common.ui.SquareFrameLayout
+                android:id="@+id/image_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:transitionName="@string/shared_transition_image"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null" />
+
+
+            </com.example.sellit.common.ui.SquareFrameLayout>
+
+
+            <TextView
+                android:id="@+id/name"
+                tools:text="Hello"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:lines="2"
+                android:textColor="?colorOnSurface"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:transitionName="@string/shared_transition_name"
+                android:layout_below="@id/image_container"
+                android:layout_marginStart="@dimen/dimen_main"
+                android:layout_marginTop="@dimen/dimen_main"
+                android:layout_marginEnd="@dimen/dimen_main"/>
+
+
+            <TextView
+                android:id="@+id/price"
+                tools:text="AED 50"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold"
+                android:textColor="?colorOnPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:background="@drawable/background_price_tag"
+                android:layout_gravity="end"
+                android:transitionName="@string/shared_transition_price"
+                android:padding="@dimen/dimen_main_half"
+                android:layout_below="@id/name"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="@dimen/dimen_main"/>
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="dimen_main_half">@dimen/_5sdp</dimen>
+
+    <dimen name="elevation_main">@dimen/_10sdp</dimen>
+    <dimen name="dimen_main">@dimen/_10sdp</dimen>
+</resources>

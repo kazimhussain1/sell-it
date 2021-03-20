@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Sell It</string>
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
+
+    <string name="netwatch_target_ping_server_ip_add">8.8.8.8</string>
+    <string name="api_key">20666679\-48858757313744d15feb69b0d</string>
+
+
+    <string name="err_went_wrong">Oops! Something went wrong</string>
+    <string name="err_device_time">Your device time might be incorrect</string>
+    <string name="err_internet_not_found">Can\'t connect to internet</string>
+    <string name="powered_by">powered by</string>
+    <string name="search_hint">Search...</string>
+    <string name="share">Share</string>
+    <string name="download">Download</string>
+    <string name="shared_transition_image">shared_transition_image_view</string>
+    <string name="shared_transition_name">shared_transition_name</string>
+    <string name="shared_transition_price">shared_transition_price</string>
+    <string name="posted_on">Posted on: %s</string>
+
+</resources>
