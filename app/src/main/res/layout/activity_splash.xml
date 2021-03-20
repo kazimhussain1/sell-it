@@ -10,8 +10,8 @@
 
         <ImageView
             android:id="@+id/image_view"
-            android:layout_width="@dimen/_150sdp"
-            android:layout_height="@dimen/_150sdp"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
             android:text="Hello World!"
             android:src="@drawable/splash_image"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -35,15 +35,12 @@
                 android:id="@+id/name"
                 tools:text="Hello"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:lines="2"
                 android:textColor="?colorOnSurface"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:transitionName="@string/shared_transition_name"
                 android:layout_below="@id/image_container"
-                android:layout_marginStart="@dimen/dimen_main"
-                android:layout_marginTop="@dimen/dimen_main"
-                android:layout_marginEnd="@dimen/dimen_main"/>
+                android:layout_margin="@dimen/dimen_main" />
 
 
             <TextView
@@ -59,7 +56,7 @@
                 android:layout_gravity="end"
                 android:transitionName="@string/shared_transition_price"
                 android:padding="@dimen/dimen_main_half"
-                android:layout_below="@id/name"
+                android:layout_alignBottom="@id/image_container"
                 android:layout_alignParentEnd="true"
                 android:layout_marginBottom="@dimen/dimen_main"/>
 
