@@ -4,20 +4,13 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import com.example.sellit.BuildConfig
 import com.example.sellit.R
 import com.example.sellit.common.ContextService
@@ -62,87 +55,6 @@ class Utilities {
                 .setBackgroundColor(ContextCompat.getColor(view.context, R.color.purple_500))
             s.show()
         }
-
-
-        fun loadImageWithGlide(imageView: ImageView, imageUrl: String) {
-            Glide.with(ContextService.getInstance().context)
-                .load(imageUrl)
-                .into(imageView)
-        }
-
-        fun loadImageWithGlideCallback(
-            imageView: ImageView,
-            imageUrl: String,
-            callback: (success: Boolean) -> Unit
-        ) {
-            Glide.with(ContextService.getInstance().context)
-                .load(imageUrl)
-                .addListener(object : RequestListener<Drawable> {
-                    override fun onLoadFailed(
-                        e: GlideException?,
-                        model: Any?,
-                        target: Target<Drawable>?,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        callback(false)
-
-                        return false
-                    }
-
-                    override fun onResourceReady(
-                        resource: Drawable?,
-                        model: Any?,
-                        target: Target<Drawable>?,
-                        dataSource: DataSource?,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        callback(true)
-
-                        return false
-                    }
-                })
-                .into(imageView)
-        }
-
-
-//        fun saveImage(image: Bitmap): String? {
-//            var savedImagePath: String? = null
-//            val imageFileName = "JPEG_" + "FILE_NAME" + ".jpg"
-//            val storageDir = File(
-//                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-//                    .toString()
-//            )
-//            var success = true
-//            if (!storageDir.exists()) {
-//                success = storageDir.mkdirs()
-//            }
-//            if (success) {
-//                val imageFile = File(storageDir, imageFileName)
-//                savedImagePath = imageFile.absolutePath
-//                try {
-//                    val fOut: OutputStream = FileOutputStream(imageFile)
-//                    image.compress(Bitmap.CompressFormat.JPEG, 100, fOut)
-//                    fOut.close()
-//                } catch (e: Exception) {
-//                    e.printStackTrace()
-//                }
-//
-//                // Add the image to the system gallery
-//                galleryAddPic(savedImagePath)
-//                //Toast.makeText(this, "IMAGE SAVED", Toast.LENGTH_LONG).show() // to make this working, need to manage coroutine, as this execution is something off the main thread
-//            }
-//            return savedImagePath
-//        }
-//
-//        private fun galleryAddPic(imagePath: String?) {
-//            imagePath?.let { path ->
-//                val mediaScanIntent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
-//                val f = File(path)
-//                val contentUri: Uri = Uri.fromFile(f)
-//                mediaScanIntent.data = contentUri
-//                ContextService.getInstance().context.sendBroadcast(mediaScanIntent)
-//            }
-//        }
 
 
         fun shareImage(bitmap: Bitmap, context: Context){

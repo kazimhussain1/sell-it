@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sellit.databinding.ItemClassifiedBinding
 import com.example.sellit.home.api.response.ClassifiedItem
 import com.example.sellit.imagecache.ImageLoader
-import com.example.sellit.utilities.Utilities
-import com.squareup.picasso.Picasso
 
 private class ImageItemDiffCallback : DiffUtil.ItemCallback<ClassifiedItem>() {
     override fun areItemsTheSame(oldItem: ClassifiedItem, newItem: ClassifiedItem): Boolean {
@@ -60,8 +58,6 @@ class HomeRecyclerAdapter :
         fun bind(item: ClassifiedItem) {
 
             ImageLoader.getInstance().loadImage(item.imageUrls[0],item.imageIds[0], binding.imageView)
-//            Picasso.get().load(item.imageUrls[0]).into(binding.imageView)
-//            Utilities.loadImageWithGlide(binding.imageView, item.imageUrlsThumbnails[0])
             binding.name.text = item.name
             binding.price.text = item.price
 

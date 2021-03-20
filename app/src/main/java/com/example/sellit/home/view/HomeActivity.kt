@@ -22,7 +22,7 @@ import com.example.sellit.utilities.Utilities
 class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(),
     HomeRecyclerAdapter.OnItemClickListener {
 
-
+    private val adapter = HomeRecyclerAdapter()
     private var data: List<ClassifiedItem> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,23 +30,30 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(),
         setContentView(R.layout.activity_home)
         setViewModel(HomeViewModel::class.java)
 
-        val adapter = HomeRecyclerAdapter()
+        setRecyclerView()
+        setObservers()
+        setListeners()
+
+        requestData()
+
+
+    }
+
+    private fun requestData() {
+        viewModel.getClassified()
+    }
+
+    private fun setRecyclerView(): HomeRecyclerAdapter {
+
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager =
             GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
         binding.recyclerView.addItemDecoration(SpaceItemDecoration(resources.getDimensionPixelSize(R.dimen.dimen_main)))
         binding.recyclerView.itemAnimator = null
-
-
-        setObservers(adapter)
-        setListeners(adapter)
-
-        viewModel.getClassified()
-
-
+        return adapter
     }
 
-    private fun setListeners(adapter: HomeRecyclerAdapter) {
+    private fun setListeners() {
 
 
 //        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -66,7 +73,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(),
         adapter.listener = this
     }
 
-    private fun setObservers(adapter: HomeRecyclerAdapter) {
+    private fun setObservers() {
         viewModel.classifiedItemResult.observe(this, {
             adapter.submitList(it)
             this.data = it
@@ -101,7 +108,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(),
 
 
         intent.putExtra(AppConstants.DATA_KEY, data[position])
-        startActivity(intent,options.toBundle())
+        startActivity(intent, options.toBundle())
     }
 
 
